@@ -22,9 +22,9 @@ CHARMAP = " .,:;ox%#@"
 ####################
 
 def get_grayscale_intensities(pix, dim):
-	"""Takes a 2D pixel array storing (r,g) values for an image and the image 
-	   dimensions as input, and returns a 2D matrix storing the 
-	   grayscale intensity for a pixel (or pixel area)."""
+	"""Takes a 2D pixel array storing (r,g) values for an image and a 2-tuple
+	   containing image dimensions as input, and returns a 2D nested list 
+	   storing the grayscale intensity for a pixel (or pixel area)."""
 
 	# Initialise the grayscale intensity array
 	gscale_int = [[0 for i in range(dim[0])] for j in range(dim[1])]
