@@ -20,7 +20,7 @@ CHARMAP = " .,:;ox%#@"
 
 
 ####################
-## Helper Functions
+# HELPER FUNCTIONS #
 ####################
 
 def get_grayscale_intensities(pix, img_width, img_height):
@@ -53,17 +53,19 @@ def get_min_max_gi(gscale_int):
 
 def convert_to_char_matrix(gscale_int, charmap):
 	"""Converts a 2D grayscale intensity matrix into a character matrix."""
+
 	# Get the min and max grayscale intensities
 	min_gi, max_gi = get_min_max_gi(gscale_int)
 
 	# Calculate the difference between them
 	diff = max_gi - min_gi
 
-	# Now, convert every single pixel value in
+	# Now, for each pixel, we will assign an index to it which refers to the
+    # specific character that will represent it from the character map
 	for row in gscale_int:
 		for i in range(len(row)):
 			row[i] = int((row[i] - min_gi)/diff*(len(charmap)-1))
-
+    
 	return gscale_int
 
 
@@ -80,8 +82,9 @@ def print_ascii_image(char_matrix, charmap):
     return
 
 
+# MAIN PROGRAM
+if __name__ == '__main__':
 
-def main():
     # Obtain the grayscale intensity for each pixel in the image
     gscale_int = get_grayscale_intensities(pix, img_width, img_height)
 
@@ -92,9 +95,4 @@ def main():
     # Now, print out the image as ASCII art
     print_ascii_image(char_matrix, CHARMAP)
 
-    # Job done! 
-    return
-
-
-# Call the main program
-main()
+    # Job done!
